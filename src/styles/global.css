@@ -1,8 +1,39 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background: #f8f7fb;
+  color: #101018;
+  --bg-deep: #f5f3ff;
+  --bg-surface: rgba(255, 255, 255, 0.85);
+  --bg-panel: rgba(255, 255, 255, 0.9);
+  --bg-end: #ffffff;
+  --border-soft: rgba(80, 82, 160, 0.18);
+  --border-strong: rgba(80, 82, 160, 0.28);
+  --text-main: #0f1020;
+  --text-subtle: #4c4f72;
+  --text-muted: #6b6f91;
+  --accent: #4f46e5;
+  --accent-strong: #7c3aed;
+  --accent-warm: #f59e0b;
+  --shadow-elevated: 0 24px 50px rgba(33, 26, 77, 0.18);
+}
+
+:root[data-theme="dark"] {
   background: #0b0b14;
   color: #f3f3f6;
+  --bg-deep: #0b0b14;
+  --bg-surface: rgba(15, 17, 30, 0.75);
+  --bg-panel: rgba(13, 16, 30, 0.85);
+  --bg-end: #05050d;
+  --border-soft: rgba(107, 119, 255, 0.25);
+  --border-strong: rgba(136, 142, 255, 0.4);
+  --text-main: #f3f3f6;
+  --text-subtle: #c9c9df;
+  --text-muted: #9aa0c2;
+  --accent: #8b92ff;
+  --accent-strong: #c4b5fd;
+  --accent-warm: #fbbf24;
+  --shadow-elevated: 0 24px 50px rgba(5, 7, 20, 0.5);
 }
 
 * {
@@ -13,7 +44,8 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1c1c2e 0%, #0b0b14 50%, #06060b 100%);
+  background: radial-gradient(circle at top, var(--accent) 0%, var(--bg-deep) 45%, var(--bg-end) 100%);
+  color: var(--text-main);
 }
 
 .page {
@@ -29,21 +61,30 @@ body {
   gap: 1rem;
 }
 
+.hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 0.75rem;
-  color: #a6a6c0;
+  color: var(--text-muted);
 }
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
+  color: var(--text-main);
 }
 
 .subhead {
   font-size: 1.1rem;
-  color: #c9c9df;
+  color: var(--text-subtle);
   max-width: 40rem;
 }
 
@@ -51,14 +92,31 @@ h1 {
   margin-left: 0.35rem;
 }
 
+.theme-toggle {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 26px rgba(46, 45, 110, 0.18);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
 .countdown-panel,
 .ticker-panel,
 .footer {
-  background: rgba(15, 17, 30, 0.75);
-  border: 1px solid rgba(107, 119, 255, 0.25);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
   border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 20px 45px rgba(5, 7, 20, 0.45);
+  box-shadow: var(--shadow-elevated);
   backdrop-filter: blur(12px);
 }
 
@@ -69,17 +127,18 @@ h1 {
 }
 
 .countdown-card {
-  background: linear-gradient(145deg, rgba(46, 54, 95, 0.9), rgba(25, 30, 54, 0.9));
+  background: linear-gradient(145deg, rgba(79, 70, 229, 0.18), rgba(124, 58, 237, 0.16));
   border-radius: 18px;
-  padding: 1.5rem;
+  padding: 1.75rem;
   text-align: center;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .countdown-value {
-  font-size: 2.5rem;
+  font-size: clamp(3rem, 7vw, 4.75rem);
   font-weight: 700;
-  color: #fef9c3;
+  color: var(--accent-warm);
+  text-shadow: 0 12px 24px rgba(245, 158, 11, 0.35);
 }
 
 .countdown-label {
@@ -87,12 +146,12 @@ h1 {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-size: 0.75rem;
-  color: #9fa4ff;
+  color: var(--accent);
 }
 
 .countdown-complete {
   grid-column: 1 / -1;
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(245, 158, 11, 0.18);
   border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
@@ -107,18 +166,18 @@ h1 {
 .ticker-card {
   padding: 1.5rem;
   border-radius: 16px;
-  background: rgba(15, 18, 33, 0.9);
-  border: 1px solid rgba(136, 142, 255, 0.4);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
   font-size: 1.1rem;
 }
 
 .ticker-sub {
-  color: #9aa0c2;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
 .footer p {
-  color: #c9c9df;
+  color: var(--text-subtle);
 }
 
 @media (max-width: 640px) {
