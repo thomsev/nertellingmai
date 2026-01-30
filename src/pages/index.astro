@@ -4,13 +4,13 @@ import QuoteTicker from "../components/QuoteTicker.jsx";
 import "../styles/global.css";
 
 const targetDate = "2025-02-14T17:00:00";
-const quittingMessage = "Dropping my keyboard at 5:00 PM, never to be paged again.";
+const quittingMessage = "Legg tastaturet frå meg klokka 17, så kan dokke ringa nokon andre.";
 const sarcasticNotes = [
-  "Yes, I already updated the docs. You're welcome.",
-  "No, I will not fix the legacy jQuery modal.",
-  "Remember me when the CI pipeline flakes again.",
-  "I left a TODO that says: 'Ask future you'.",
-  "Sure, I'll join the postmortem... in spirit.",
+  "Faen ska dokke gjør da",
+  "Snart ferige med opptaket nå da?",
+  "Px er bedre enn rem",
+  "Sendt nettsidå te odda nå da?",
+  "Trent da?",
 ];
 ---
 
@@ -19,18 +19,18 @@ const sarcasticNotes = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Countdown to My Great Escape</title>
+    <title>Nedtelling te avgang, om dokke orke å sjå på</title>
   </head>
   <body>
     <main class="page">
       <section class="hero">
         <div class="hero-top">
-          <p class="eyebrow">To my favorite bug wranglers</p>
+          <p class="eyebrow">Te dokke som aldri e heilt ferdige</p>
           <button class="theme-toggle" type="button" data-theme-toggle>
-            Switch theme
+            Bytt tema, om du må
           </button>
         </div>
-        <h1>Countdown to my glorious resignation</h1>
+        <h1>Nedtelling te eg stikke, sidan dokke spør</h1>
         <p class="subhead">
           {quittingMessage}
           <span class="spark">✨</span>
@@ -42,14 +42,13 @@ const sarcasticNotes = [
       </section>
 
       <section class="ticker-panel">
-        <h2>Gentle reminders for the team</h2>
+        <h2>Små påminningar, så dokke ikkje gløyme alt</h2>
         <QuoteTicker client:load notes={sarcasticNotes} />
       </section>
 
       <section class="footer">
         <p>
-          Hosting this on Netlify so you can keep watching the clock long after my
-          Slack avatar disappears.
+          Lagt på Netlify så dokke kan stirra på klokka etter eg e vekke.
         </p>
       </section>
     </main>
@@ -64,8 +63,8 @@ const sarcasticNotes = [
     root.dataset.theme = defaultTheme;
 
     const updateLabel = () => {
-      const next = root.dataset.theme === "dark" ? "Light mode" : "Dark mode";
-      toggle.textContent = `Switch to ${next}`;
+      const next = root.dataset.theme === "dark" ? "lyst, tydelegvis" : "mørkt, sjølvsagt";
+      toggle.textContent = `Bytt til ${next}`;
       toggle.setAttribute("aria-pressed", root.dataset.theme === "dark");
     };
 
