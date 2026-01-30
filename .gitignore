@@ -1,6 +1,12 @@
 # dependencies
 node_modules/
 
+# package files
+package*.json
+
+# TypeScript declaration files
+*.d.ts
+
 # build output
 dist/
 .astro/

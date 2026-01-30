@@ -3,8 +3,8 @@ import Countdown from "../components/Countdown.jsx";
 import QuoteTicker from "../components/QuoteTicker.jsx";
 import "../styles/global.css";
 
-const targetDate = "2025-02-14T17:00:00";
-const quittingMessage = "Legg tastaturet frå meg klokka 17, så kan dokke ringa nokon andre.";
+const targetDate = "2026-04-30T14:00:00";
+const quittingMessage = "Legg tastaturet frå meg klokka 14, så kan dokke ringa nokon andre.";
 const sarcasticNotes = [
   "Faen ska dokke gjør da",
   "Snart ferige med opptaket nå da?",
@@ -63,14 +63,15 @@ const sarcasticNotes = [
     root.dataset.theme = defaultTheme;
 
     const updateLabel = () => {
+      if (!toggle) return;
       const next = root.dataset.theme === "dark" ? "lyst, tydelegvis" : "mørkt, sjølvsagt";
       toggle.textContent = `Bytt til ${next}`;
-      toggle.setAttribute("aria-pressed", root.dataset.theme === "dark");
+      toggle.setAttribute("aria-pressed", (root.dataset.theme === "dark").toString());
     };
 
     updateLabel();
 
-    toggle.addEventListener("click", () => {
+    toggle?.addEventListener("click", () => {
       root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", root.dataset.theme);
       updateLabel();
