@@ -26,13 +26,13 @@ const QuoteTicker = ({ notes }) => {
   }, [index]);
 
   if (!safeNotes.length) {
-    return <p className="ticker-card">No sarcastic reminders were deployed.</p>;
+    return <p className="ticker-card">Ingen spydige påminningar i dag, overraskande nok.</p>;
   }
 
   return (
     <div className="ticker">
       <div className="ticker-card">{safeNotes[index]}</div>
-      <p className="ticker-sub">Cycle count: {index + 1}</p>
+      <p className="ticker-sub">Runde: {index + 1}</p>
     </div>
   );
 };

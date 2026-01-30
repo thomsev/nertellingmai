@@ -27,10 +27,10 @@ const Countdown = ({ targetDate }) => {
 
   const units = useMemo(
     () => [
-      { label: "Days", value: timeLeft.days },
-      { label: "Hours", value: timeLeft.hours },
-      { label: "Minutes", value: timeLeft.minutes },
-      { label: "Seconds", value: timeLeft.seconds },
+      { label: "Daga", value: timeLeft.days },
+      { label: "Timar", value: timeLeft.hours },
+      { label: "Minutt", value: timeLeft.minutes },
+      { label: "Sekund", value: timeLeft.seconds },
     ],
     [timeLeft]
   );
@@ -61,8 +61,8 @@ const Countdown = ({ targetDate }) => {
       ))}
       {timeLeft.totalSeconds === 0 && (
         <div className="countdown-complete">
-          <h3>It is time.</h3>
-          <p>Deploying my final good-bye emoji now.</p>
+          <h3>No e det gjort.</h3>
+          <p>Sender siste farvel-emojien, så kan dokke kosa dokke.</p>
         </div>
       )}
     </div>
