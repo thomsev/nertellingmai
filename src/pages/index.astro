@@ -1,0 +1,52 @@
+---
+import Countdown from "../components/Countdown.jsx";
+import QuoteTicker from "../components/QuoteTicker.jsx";
+import "../styles/global.css";
+
+const targetDate = "2025-02-14T17:00:00";
+const quittingMessage = "Dropping my keyboard at 5:00 PM, never to be paged again.";
+const sarcasticNotes = [
+  "Yes, I already updated the docs. You're welcome.",
+  "No, I will not fix the legacy jQuery modal.",
+  "Remember me when the CI pipeline flakes again.",
+  "I left a TODO that says: 'Ask future you'.",
+  "Sure, I'll join the postmortem... in spirit.",
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Countdown to My Great Escape</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">To my favorite bug wranglers</p>
+        <h1>Countdown to my glorious resignation</h1>
+        <p class="subhead">
+          {quittingMessage}
+          <span class="spark">✨</span>
+        </p>
+      </section>
+
+      <section class="countdown-panel">
+        <Countdown client:load targetDate={targetDate} />
+      </section>
+
+      <section class="ticker-panel">
+        <h2>Gentle reminders for the team</h2>
+        <QuoteTicker client:load notes={sarcasticNotes} />
+      </section>
+
+      <section class="footer">
+        <p>
+          Hosting this on Netlify so you can keep watching the clock long after my
+          Slack avatar disappears.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
