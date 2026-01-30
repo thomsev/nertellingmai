@@ -1,0 +1,132 @@
+:root {
+  color-scheme: dark;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background: #0b0b14;
+  color: #f3f3f6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1c1c2e 0%, #0b0b14 50%, #06060b 100%);
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: #a6a6c0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+.subhead {
+  font-size: 1.1rem;
+  color: #c9c9df;
+  max-width: 40rem;
+}
+
+.spark {
+  margin-left: 0.35rem;
+}
+
+.countdown-panel,
+.ticker-panel,
+.footer {
+  background: rgba(15, 17, 30, 0.75);
+  border: 1px solid rgba(107, 119, 255, 0.25);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 45px rgba(5, 7, 20, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.25rem;
+}
+
+.countdown-card {
+  background: linear-gradient(145deg, rgba(46, 54, 95, 0.9), rgba(25, 30, 54, 0.9));
+  border-radius: 18px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.countdown-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fef9c3;
+}
+
+.countdown-label {
+  margin-top: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #9fa4ff;
+}
+
+.countdown-complete {
+  grid-column: 1 / -1;
+  background: rgba(245, 158, 11, 0.15);
+  border-radius: 18px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.ticker {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ticker-card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(15, 18, 33, 0.9);
+  border: 1px solid rgba(136, 142, 255, 0.4);
+  font-size: 1.1rem;
+}
+
+.ticker-sub {
+  color: #9aa0c2;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  color: #c9c9df;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .countdown-card {
+    padding: 1.2rem;
+  }
+}
