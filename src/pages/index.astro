@@ -24,7 +24,12 @@ const sarcasticNotes = [
   <body>
     <main class="page">
       <section class="hero">
-        <p class="eyebrow">To my favorite bug wranglers</p>
+        <div class="hero-top">
+          <p class="eyebrow">To my favorite bug wranglers</p>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            Switch theme
+          </button>
+        </div>
         <h1>Countdown to my glorious resignation</h1>
         <p class="subhead">
           {quittingMessage}
@@ -49,4 +54,27 @@ const sarcasticNotes = [
       </section>
     </main>
   </body>
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const defaultTheme = storedTheme ?? (prefersDark ? "dark" : "light");
+
+    root.dataset.theme = defaultTheme;
+
+    const updateLabel = () => {
+      const next = root.dataset.theme === "dark" ? "Light mode" : "Dark mode";
+      toggle.textContent = `Switch to ${next}`;
+      toggle.setAttribute("aria-pressed", root.dataset.theme === "dark");
+    };
+
+    updateLabel();
+
+    toggle.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", root.dataset.theme);
+      updateLabel();
+    });
+  </script>
 </html>
