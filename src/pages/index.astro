@@ -4,6 +4,7 @@ import QuoteTicker from "../components/QuoteTicker.jsx";
 import "../styles/global.css";
 
 const targetDate = "2026-04-30T14:00:00";
+const juneCountdownDate = "2026-06-01T00:00:00";
 const quittingMessage = "Legg tastaturet frå meg klokka 14, så kan dokke ringa nokon andre.";
 const sarcasticNotes = [
   "Faen ska dokke gjør da",
@@ -46,6 +47,12 @@ const sarcasticNotes = [
       </section>
 
       <section class="countdown-panel">
+        <h2>Nedtelling te 1. juni</h2>
+        <Countdown client:load targetDate={juneCountdownDate} />
+      </section>
+
+      <section class="countdown-panel">
+        <h2>Nedtelling te eg stikke</h2>
         <Countdown client:load targetDate={targetDate} />
       </section>
 

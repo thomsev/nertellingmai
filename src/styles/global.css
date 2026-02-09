@@ -149,6 +149,13 @@ h1 {
   color: var(--accent);
 }
 
+
+.countdown-panel h2 {
+  margin-bottom: 1rem;
+  color: var(--text-subtle);
+  font-size: 1.1rem;
+}
+
 .countdown-complete {
   grid-column: 1 / -1;
   background: rgba(245, 158, 11, 0.18);
