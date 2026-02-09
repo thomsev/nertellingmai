@@ -27,12 +27,12 @@ const Countdown = ({ targetDate }) => {
 
   const units = useMemo(
     () => [
-      { label: "Daga", value: timeLeft.days },
+      { label: "Dagar", value: timeLeft.days },
       { label: "Timar", value: timeLeft.hours },
       { label: "Minutt", value: timeLeft.minutes },
       { label: "Sekund", value: timeLeft.seconds },
     ],
-    [timeLeft]
+    [timeLeft],
   );
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Countdown = ({ targetDate }) => {
     gsap.fromTo(
       ".countdown-card",
       { y: 12, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.08 }
+      { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.08 },
     );
   }, []);
 
@@ -61,7 +61,7 @@ const Countdown = ({ targetDate }) => {
       ))}
       {timeLeft.totalSeconds === 0 && (
         <div className="countdown-complete">
-          <h3>No e det gjort.</h3>
+          <h3>Nå e det gjort.</h3>
           <p>Sender siste farvel-emojien, så kan dokke kosa dokke.</p>
         </div>
       )}
