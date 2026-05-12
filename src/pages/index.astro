@@ -4,17 +4,24 @@ import QuoteTicker from "../components/QuoteTicker.jsx";
 import "../styles/global.css";
 
 const targetDate = "2026-09-01T00:00:00";
-const quittingMessage = "Legg tastaturet frå meg klokka 14, så kan dokke ringa nokon andre.";
+
+const quittingMessage =
+  "Legg tastaturet frå meg klokka 14, så kan dokke ringa nokon andre.";
+
 const sarcasticNotes = [
   "Faen ska dokke gjør da",
+  "que",
+  "useTiss",
   "Snart ferige med opptaket nå da?",
   "Px er bedre enn rem",
   "Sendt nettsidå te odda nå da?",
   "Trent da?",
   "Ka type blomster vil mordi ha?",
   "Nammi nam",
+  "useNammi",
   "Ka du slafsa med i dag da?",
   "Mensen e snart over, slapp av",
+  "Mordi e hora",
   "useLillejulaften",
   "useKrakkOgTau",
   "Har fiksa det i opptaket",
@@ -38,43 +45,53 @@ const sarcasticNotes = [
             Bytt tema, om du må
           </button>
         </div>
+
         <h1>Nedtelling te eg stikke, siden dokke mase</h1>
+
         <p class="subhead">
           {quittingMessage}
           <span class="spark">✨</span>
         </p>
       </section>
+
       <section class="countdown-panel">
-        <h2>Nedtelling te eg stikke</h2>
-        <Countdown client:load targetDate={targetDate} />
+        <h2>Round 2: Nedtelling te eg stikke🍼</h2>
+        <Countdown client:only="react" targetDate={targetDate} />
       </section>
 
       <section class="ticker-panel">
-        <h2>Små påminnelsar, så dokke ikkje glømme alt</h2>
+        <h2>useSnaggas()</h2>
         <QuoteTicker client:load notes={sarcasticNotes} />
       </section>
 
       <section class="footer">
-        <p>
-          Lagt på Netlify så dokke kan stirra på klokka etter eg e vekke.
-        </p>
+        <p>Lagt på Netlify så dokke kan stirra på klokka etter eg e vekke.</p>
       </section>
     </main>
   </body>
+
   <script>
     const root = document.documentElement;
     const toggle = document.querySelector("[data-theme-toggle]");
     const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
     const defaultTheme = storedTheme ?? (prefersDark ? "dark" : "light");
 
     root.dataset.theme = defaultTheme;
 
     const updateLabel = () => {
       if (!toggle) return;
-      const next = root.dataset.theme === "dark" ? "lyst, tydelegvis" : "mørkt, sjølvsagt";
+      const next =
+        root.dataset.theme === "dark" ? "lyst, tydelegvis" : "mørkt, sjølvsagt";
       toggle.textContent = `Bytt til ${next}`;
-      toggle.setAttribute("aria-pressed", (root.dataset.theme === "dark").toString());
+      toggle.setAttribute(
+        "aria-pressed",
+        (root.dataset.theme === "dark").toString(),
+      );
     };
 
     updateLabel();

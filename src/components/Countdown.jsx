@@ -61,20 +61,21 @@ const createBits = (count) =>
     size: `${random(0.4, 1).toFixed(2)}rem`,
   }));
 
-const Countdown = ({ targetDate }) => {
+export default function Countdown({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(() => createCountdown(targetDate));
   const [confettiBits] = useState(() => createBits(70));
-  const phase = useMemo(() => getHypePhase(timeLeft.totalSeconds), [timeLeft.totalSeconds]);
 
-  const units = useMemo(
-    () => [
-      { label: "Dagar", value: timeLeft.days },
-      { label: "Timar", value: timeLeft.hours },
-      { label: "Minutt", value: timeLeft.minutes },
-      { label: "Sekund", value: timeLeft.seconds },
-    ],
-    [timeLeft],
+  const phase = useMemo(
+    () => getHypePhase(timeLeft.totalSeconds),
+    [timeLeft.totalSeconds],
   );
+
+  const units = [
+    { label: "Dagar", value: timeLeft.days },
+    { label: "Timar", value: timeLeft.hours },
+    { label: "Minutt", value: timeLeft.minutes },
+    { label: "Sekund", value: timeLeft.seconds },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -97,44 +98,50 @@ const Countdown = ({ targetDate }) => {
   }, [phase]);
 
   return (
-    <div className="countdown">
-      <div className={`hype-meter hype-meter--${phase}`}>
+    <>
+      <div
+        className={`hype-meter hype-meter--${phase}`}
+        style={{ marginBottom: "1.25rem" }}
+      >
         <p className="hype-meter-label">Stemning akkurat no</p>
         <p className="hype-meter-value">{getHypeMessage(phase)}</p>
       </div>
-      {units.map((unit) => (
-        <article className="countdown-card" key={unit.label}>
-          <p className="countdown-value">{pad(unit.value)}</p>
-          <p className="countdown-label">{unit.label}</p>
-        </article>
-      ))}
-      {timeLeft.totalSeconds === 0 && (
-        <div className="countdown-complete">
-          <h3>Nå e det gjort.</h3>
-          <p>Sender siste farvel-emojien, så kan dokke kosa dokke.</p>
-        </div>
-      )}
-      {phase === "finale" && (
-        <div className="confetti-rain" aria-hidden="true">
-          {confettiBits.map((bit) => (
-            <span
-              className="confetti-bit"
-              key={bit.id}
-              style={{
-                left: bit.left,
-                animationDelay: bit.delay,
-                animationDuration: bit.duration,
-                "--drift": bit.drift,
-                "--rotate": bit.rotate,
-                "--hue": bit.hue,
-                "--size": bit.size,
-              }}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
 
-export default Countdown;
+      <div className="countdown">
+        {units.map((unit) => (
+          <article className="countdown-card" key={unit.label}>
+            <p className="countdown-value">{pad(unit.value)}</p>
+            <p className="countdown-label">{unit.label}</p>
+          </article>
+        ))}
+
+        {timeLeft.totalSeconds === 0 && (
+          <div className="countdown-complete">
+            <h3>Nå e det gjort.</h3>
+            <p>Sender siste farvel-emojien, så kan dokke kosa dokke.</p>
+          </div>
+        )}
+
+        {phase === "finale" && (
+          <div className="confetti-rain" aria-hidden="true">
+            {confettiBits.map((bit) => (
+              <span
+                className="confetti-bit"
+                key={bit.id}
+                style={{
+                  left: bit.left,
+                  animationDelay: bit.delay,
+                  animationDuration: bit.duration,
+                  "--drift": bit.drift,
+                  "--rotate": bit.rotate,
+                  "--hue": bit.hue,
+                  "--size": bit.size,
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
